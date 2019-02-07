@@ -1,0 +1,20 @@
+{
+  "name": "jest_examples",
+  "version": "1.0.0",
+  "description": "My first tests using Jest.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Helton Alves",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/runtime": "^7.3.1",
+    "babel-jest": "^24.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "jest": "^24.1.0"
+  }
+}
