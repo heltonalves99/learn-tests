@@ -1,4 +1,6 @@
-import { upperCase } from '../src/main';
+import { upperCase, helloWorldMocky } from '../src/main';
+
+global.fetch = require('node-fetch');
 
 describe('first set', () => {
   // beforeEach(() => {
@@ -42,5 +44,15 @@ describe('first set', () => {
     } catch(err) {
       expect(err).toMatch('Treta aqui!');
     }
+  });
+
+  test('should return hello World message with user name.', async () => {
+    const result = await helloWorldMocky('Helton');
+    expect(result).toBe('Hi Helton: hello world');
   })
+
+  test('should return hello world message without user name', async () => {
+    const result = await helloWorldMocky();
+    expect(result).toBe('hello world');
+  });
 });

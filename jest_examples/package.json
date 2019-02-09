@@ -15,6 +15,7 @@
     "@babel/runtime": "^7.3.1",
     "babel-jest": "^24.1.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "jest": "^24.1.0"
+    "jest": "^24.1.0",
+    "node-fetch": "^2.3.0"
   }
 }
