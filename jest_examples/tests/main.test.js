@@ -1,6 +1,17 @@
-import { upperCase, helloWorldMocky } from '../src/main';
+import { examples } from '../src/main';
 
-global.fetch = require('node-fetch');
+// global.fetch = require('node-fetch');
+global.fetch = jest.fn().mockImplementation(() => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      ok: true, 
+      Id: '123', 
+      json: () => { 
+        return { text: 'hello world' };
+      }
+    });
+  });
+});
 
 describe('first set', () => {
   // beforeEach(() => {
@@ -11,48 +22,48 @@ describe('first set', () => {
   //   console.log('depois de cada.');
   // })
 
-  test('Adding 1 + 1 equals 2', () => {
-    // expect(sum(1, 1)).toBe(2)
-    expect(1 + 1).toBe(2);
-  });
-
-  test('Adding 1 + 1 is not 3', () => {
-    // expect(sum(1, 1)).toBe(2)
-    expect(1 + 1).not.toBe(3);
-  });
-
   test('should convert str to uppercase.', () => {
-    return upperCase('test').then(str => {
+    return examples.upperCase('test').then(str => {
       expect(str).toBe('TEST');
     });
   });
 
   test('should throw error message when attr is empty.', () => {
-    return upperCase('').catch(err => {
+    return examples.upperCase('').catch(err => {
       expect(err).toMatch('Treta aqui!');
     });
   });
 
   test('should convert str to uppercase. Async - Await', async () => {
-    const str = await upperCase('TEST');
+    const str = await examples.upperCase('TEST');
     expect(str).toMatch('TEST');
   });
 
   test('should throw error message when attr is empty. Async - Await', async () => {
     try {
-      await upperCase('');
+      await examples.upperCase('');
     } catch(err) {
       expect(err).toMatch('Treta aqui!');
     }
   });
 
   test('should return hello World message with user name.', async () => {
-    const result = await helloWorldMocky('Helton');
+    const result = await examples.helloWorldMocky('Helton');
     expect(result).toBe('Hi Helton: hello world');
   })
 
   test('should return hello world message without user name', async () => {
-    const result = await helloWorldMocky();
+    const result = await examples.helloWorldMocky();
     expect(result).toBe('hello world');
+  });
+
+  test('should be call with specific parameter', async () => {
+    const examplesSpy = jest.spyOn(examples, 'helloWorldMocky');
+    
+    const name = 'helton alves';
+    const result = await examples.helloWorldMocky(name);
+
+    expect(examplesSpy).toHaveBeenCalled();
+    expect(examplesSpy).toHaveBeenCalledWith(name);
   });
 });
