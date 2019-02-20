@@ -1,11 +1,11 @@
 
-export const search = () => fetch('http://www.mocky.io/v2/5c5c886f32000011002204f5')
+export const search = (query, type) => fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`)
   .then(resp => resp.json());
 
-export const searchArtists = () => '';
+export const searchArtists = query => search(query, 'artist');
 
-export const searchAlbums = () => '';
+export const searchAlbums = query => search(query, 'album');
 
-export const searchTracks = () => '';
+export const searchTracks = query => search(query, 'track');
 
-export const searchPlaylists = () => '';
+export const searchPlaylists = query => search(query, 'playlist');
