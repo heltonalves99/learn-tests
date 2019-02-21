@@ -43,16 +43,16 @@ describe('Generic Search', () => {
 
   test('should call fetch with specific url', () => {
     search('emicida', 'artist');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist', expect.any(Object));
 
     search('rammstein', 'album');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=rammstein&type=album');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=rammstein&type=album', expect.any(Object));
   });
 
   test('should call fetch with multipli types', () => {
     search('emicida', ['artist', 'album']);
 
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist,album');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist,album', expect.any(Object));
   });
 
   test('should return a json object from fetch', () => {
@@ -72,10 +72,10 @@ describe('SearchArtists', () => {
 
   test('should call fetch with specific url', () => {
     searchArtists('emicida');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=artist', expect.any(Object));
 
     searchArtists('o-rappa');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=artist');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=artist', expect.any(Object));
   });
 });
 
@@ -89,10 +89,10 @@ describe('searchAlbums', () => {
 
   test('should call fetch with specific url', () => {
     searchAlbums('emicida');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=album');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=album', expect.any(Object));
 
     searchAlbums('o-rappa');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=album');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=album', expect.any(Object));
   });
 });
 
@@ -106,10 +106,10 @@ describe('searchTracks', () => {
 
   test('should call fetch with specific url', () => {
     searchTracks('emicida');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=track');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=track', expect.any(Object));
 
     searchTracks('o-rappa');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=track');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=track', expect.any(Object));
   });
 });
 
@@ -123,9 +123,9 @@ describe('searchPlaylists', () => {
 
   test('should call fetch with specific url', () => {
     searchPlaylists('emicida');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=playlist');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=emicida&type=playlist', expect.any(Object));
 
     searchPlaylists('o-rappa');
-    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=playlist');
+    expect(global.fetch).toBeCalledWith('https://api.spotify.com/v1/search?q=o-rappa&type=playlist', expect.any(Object));
   });
 });
